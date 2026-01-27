@@ -1,0 +1,28 @@
+name: 'Run integration tests'
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  id-token: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Print Workflow Dispatch Inputs and Env Vars
+        uses: shayki5/print-workflow-dispatch-inputs@v1
+        with:
+          add_to_summary: 'true'
+
+      - name: Run check for webhooks_devops_assignment
+        uses: prafdin/check-assignment@main
+        with:
+          params_file: 'params.json'
+          assignee_login: ${{ github.event.pull_request_target.user.login }}
+          repo_name: ${{ github.event.pull_request_target.head.repo.full_name }}
+          sa_ssh_pkey: ${{ secrets.SSH_PRIVATE_KEY }}
+          webhooks_devops_assignment: true
