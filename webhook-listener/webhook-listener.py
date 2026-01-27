@@ -40,7 +40,7 @@ class WebhookHandler(BaseHTTPRequestHandler):
         event_type = self.headers.get('X-GitHub-Event', 'unknown')
         branch = payload.get('ref', '').replace('refs/heads/', '')
 
-        if branch != 'webhooks_devops_assignment':
+        if !branch.startswith("webhooks_devops_assignment"):
             return
 
         if event_type == 'push':
