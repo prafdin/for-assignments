@@ -5,6 +5,8 @@ on:
     types: [opened, reopened]
     paths:
       - 'params.json'
+    branches:
+      - main
 
 permissions: write-all
 
