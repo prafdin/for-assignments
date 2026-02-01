@@ -9,6 +9,11 @@
       "login": "SA3000UDP",
       "id": "sa3000udp",
       "app": "check-assignment-tests"
+    },
+    {
+      "login": "prafdin",
+      "id": "prafdin",
+      "app": "check-assignment-tests"
     }
   ]
 }
